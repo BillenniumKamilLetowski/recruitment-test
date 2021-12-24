@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+## Overview
+To create project I used CRA template. I hope that I prepared application with all requirements. I didn't want to use some extra libraries like axios, react-router or context/redux. I did some tests but not for all files. I just wanted to show my knowledge of it and prepare general cases for `App` component and one custom hook.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Run project with 
+`npm run start`
 
-## Available Scripts
+## Run tests with 
+`npm run test`
 
-In the project directory, you can run:
+## Project structure
 
-### `npm start`
+- `api-repository` - I want to place there all api calls with request and response types
+- `components` - I want to place there all components which I build application
+- `hooks` - I want to place there all hooks
+- `models` - I want to place there all types used in whole application
+- `services` - I want to place there services
+- `utils` - I want to place there utils functions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project architecture
+![Alt text](architecture.jpg?raw=true "Title")
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<span style="color:#DAE8FC">#####</span> First layer is for fetching/sending data to API. I define there all api calls.
 
-### `npm test`
+<span style="color:#D5E8D4">#####</span> Second layer are services where I call functions from `api-repository` and I transform, do some changes in data. With services I return ready data form other layers.
+ 
+<span style="color:#FFF2CC">#####</span> Third layer are hooks. I use there functions from services and I store data here. I also would use some store providers such as Context or Redux. In my case I didn't need to use any of that features.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<span style="color:#F8CECC">#####</span> The last layer are components. I use there hooks with ready to use state and methods.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+With that layers structure I provide more flexibility and order. In my opinion project is easy to test and understand
